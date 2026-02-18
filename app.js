@@ -275,3 +275,43 @@ WeatherApp.prototype.showWelcome = function() {
 
 // Create an instance of WeatherApp and initialize it
 const app = new WeatherApp('54012a0ff8babaa339b664af09286842');
+// Save data (must be a string)
+localStorage.setItem('key', 'value');
+
+// Get data
+const value = localStorage.getItem('key');
+
+// Save objects (convert to JSON first)
+const obj = { name: 'John', age: 30 };
+localStorage.setItem('user', JSON.stringify(obj));
+
+// Get objects (parse JSON back)
+const user = JSON.parse(localStorage.getItem('user'));
+
+// Remove item
+localStorage.removeItem('key');
+
+// Clear all
+localStorage.clear();
+function WeatherApp(apiKey) {
+    this.apiKey = apiKey;
+    this.apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
+    this.forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+    
+    // Existing DOM references
+    this.searchBtn = document.getElementById('search-btn');
+    this.cityInput = document.getElementById('city-input');
+    this.weatherDisplay = document.getElementById('weather-display');
+    
+    // TODO: Add new DOM references
+    // this.recentSearchesSection = document.getElementById('recent-searches-section');
+    // this.recentSearchesContainer = document.getElementById('recent-searches-container');
+    
+    // TODO: Initialize recent searches array
+    // this.recentSearches = [];
+    
+    // TODO: Set maximum number of recent searches to save
+    // this.maxRecentSearches = 5;
+    
+    this.init();
+}
